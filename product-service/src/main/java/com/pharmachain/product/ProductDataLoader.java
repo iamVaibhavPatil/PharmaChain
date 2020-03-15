@@ -70,6 +70,44 @@ public class ProductDataLoader implements ApplicationListener<ContextRefreshedEv
 		productService.addProduct(product2);
 		log.info("Adding product-2 ended");
 
+		// Product 3
+		log.info("Adding product-3 started");
+		List<Ingredient> ingredients3 = new ArrayList<Ingredient>();
+		Product product3 = new Product();
+		product3.setProductName("Saridon");
+		product3.setProductDescription("Saridon, a mild analgesic, helps in the treatment of fever, headache, pain, febrility and joint pain.");
+		product3.setCompanyName("Piramal Enterprises Ltd.");
+		product3.setCategory("SCHEDULE H");
+		product3.setPacking("TAB");
+		product3.setStrength("250 MG");
+		product3.setPrice("10.00");
+		product3.setIsOTCApproved("Y");
+		ingredients3.add(new Ingredient("Paracetamol", "250 mg"));
+		ingredients3.add(new Ingredient("Propyphenazone", "150 mg"));
+		ingredients3.add(new Ingredient("Caffeine", "50 mg"));
+		product3.setIngredients(ingredients3);
+		productService.addProduct(product3);
+		log.info("Adding product-3 ended");
+		
+		// Product 4
+		log.info("Adding product-4 started");
+		List<Ingredient> ingredients4 = new ArrayList<Ingredient>();
+		Product product4 = new Product();
+		product4.setProductName("Saridon");
+		product4.setProductDescription("Saridon, a mild analgesic, helps in the treatment of fever, headache, pain, febrility and joint pain.");
+		product4.setCompanyName("Piramal Enterprises Ltd.");
+		product4.setCategory("SCHEDULE H");
+		product4.setPacking("TAB");
+		product4.setStrength("250 MG");
+		product4.setPrice("10.00");
+		product4.setIsOTCApproved("Y");
+		ingredients4.add(new Ingredient("Paracetamol", "250 mg"));
+		ingredients4.add(new Ingredient("Propyphenazone", "150 mg"));
+		ingredients4.add(new Ingredient("Caffeine", "50 mg"));
+		product4.setIngredients(ingredients4);
+		productService.addProduct(product4);
+		log.info("Adding product-4 ended");
+
 		log.info("Product loading ended");
 	}
 }
