@@ -51,25 +51,24 @@ public class ProductDataLoader implements ApplicationListener<ContextRefreshedEv
 		ingredients1.add(new Ingredient("Clorpheniramine Maleate", "4 mg"));
 		product1.setIngredients(ingredients1);
 		productService.addProduct(product1);
-		log.info("Adding product-2 started");
+		log.info("Adding product-1 ended");
 
 		// Product 2
 		log.info("Adding product-2 started");
 		List<Ingredient> ingredients2 = new ArrayList<Ingredient>();
 		Product product2 = new Product();
-		product2.setProductName("Codistar Cough Syrup");
-		product2.setProductDescription("Codistar Cough Syrup for unproductive dry cough only");
-		product2.setCompanyName("Relax Pharmaceuticals Pvt. Ltd.");
-		product2.setCategory("SCHEDULE H1");
-		product2.setPacking("BOT");
-		product2.setStrength("100 ML");
-		product2.setPrice("78.00");
-		product2.setIsOTCApproved("N");
-		ingredients2.add(new Ingredient("Codeine Phosphate", "5 mg"));
-		ingredients2.add(new Ingredient("Clorpheniramine Maleate", "4 mg"));
+		product2.setProductName("Aciloc 150 MG Tablet");
+		product2.setProductDescription("Aciloc 150 MG Tablet is a very effective medicine that is used to reduce the amount of acid produced in the stomach. It is used to treat and prevent stomach acid-related disorders such as heartburn and acid reflux disease.");
+		product2.setCompanyName("Cadila Pharmaceuticals Ltd.");
+		product2.setCategory("SCHEDULE H");
+		product2.setPacking("TAB");
+		product2.setStrength("150 MG");
+		product2.setPrice("12.00");
+		product2.setIsOTCApproved("Y");
+		ingredients2.add(new Ingredient("Ranitidine", "150 mg"));
 		product2.setIngredients(ingredients2);
 		productService.addProduct(product2);
-		log.info("Adding product-2 started");
+		log.info("Adding product-2 ended");
 
 		log.info("Product loading ended");
 	}
