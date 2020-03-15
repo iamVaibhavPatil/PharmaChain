@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      database: pharmachain
+      #username: 
+      #password:
+      host: localhost
+      port: 27017
+  jackson:
+    default-property-inclusion: non-null
