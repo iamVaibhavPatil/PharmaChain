@@ -11,11 +11,11 @@ import com.pharmachain.product.domain.Product;
 @Repository
 public interface ProductRepository extends MongoRepository<Product, String>{
 
-	Optional<Product> findByProductId(String productId);
+	public Optional<Product> findByProductId(String productId);
 	
-	void deleteByProductId(String productId);
+	public void deleteByProductId(String productId);
 
-	List<Product> findByProductNameContainingIgnoreCase(String productName);
+	public List<Product> findByProductNameContainingIgnoreCase(String productName);
 	
-	Optional<Product> findByCompanyNameAndProductName(String companyName, String productName);
+	public Optional<Product> findByCompanyNameAndProductName(String companyName, String productName);
 }
