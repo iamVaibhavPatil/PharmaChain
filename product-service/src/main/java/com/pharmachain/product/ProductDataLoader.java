@@ -89,8 +89,6 @@ public class ProductDataLoader implements ApplicationListener<ContextRefreshedEv
 		productService.addProduct(product3);
 		log.info("Adding product-3 ended");
 
-				
-		
 		// Product 4
 		log.info("Adding product-4 started");
 		List<Ingredient> ingredients4 = new ArrayList<Ingredient>();
