@@ -13,6 +13,7 @@ spring:
       auto-index-creation: false
       #username: root
       #password: root
+  jackson:    default-property-inclusion: non-null
 
 eureka:
   client:
