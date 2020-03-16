@@ -20,7 +20,7 @@ import com.pharmachain.product.exception.ServiceException;
 import com.pharmachain.product.service.ProductService;
 
 @RestController
-@RequestMapping("products")
+@RequestMapping("/products")
 public class ProductController {
 
 	@Autowired

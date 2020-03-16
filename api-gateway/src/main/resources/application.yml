@@ -22,6 +22,4 @@ zuul:
     product-service:
       path: /products/**
       service-id: PRODUCT-SERVICE
-    #order-service:
-      #path: /orders/**
-      #service-id: ORDER-SERVICE
+      strip-prefix: false
