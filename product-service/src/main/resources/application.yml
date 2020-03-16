@@ -3,7 +3,7 @@ server:
   
 spring:
   application:
-    name: product-service
+    name: PRODUCT-SERVICE
 
   data:
     mongodb:
