@@ -23,3 +23,5 @@ zuul:
       path: /products/**
       service-id: PRODUCT-SERVICE
       strip-prefix: false
+  host:
+    socket-timeout-millis: 30000
