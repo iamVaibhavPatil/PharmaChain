@@ -14,7 +14,7 @@ import com.pharmachain.gateway.service.AuthenticationService;
 
 @RestController
 @RequestMapping("/api/auth")
-public class AuthController {
+public class AuthenticationController {
 
 	@Autowired
 	private AuthenticationService authenticationService;

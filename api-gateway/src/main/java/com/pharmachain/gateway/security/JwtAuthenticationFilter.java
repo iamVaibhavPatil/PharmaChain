@@ -22,12 +22,12 @@ import com.pharmachain.gateway.domain.Role;
 
 import io.jsonwebtoken.Claims;
 
-public class JwtAuthFilter extends OncePerRequestFilter {
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 	private JwtConfiguration jwtConfiguration;
 	private JwtTokenProvider jwtTokenProvider;
 
-	public JwtAuthFilter(JwtConfiguration jwtConfiguration, JwtTokenProvider jwtTokenProvider) {
+	public JwtAuthenticationFilter(JwtConfiguration jwtConfiguration, JwtTokenProvider jwtTokenProvider) {
 		this.jwtConfiguration = jwtConfiguration;
 		this.jwtTokenProvider = jwtTokenProvider;
 	}

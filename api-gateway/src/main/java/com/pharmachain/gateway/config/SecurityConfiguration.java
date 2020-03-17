@@ -16,8 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.pharmachain.gateway.security.CustomUserDetailService;
-import com.pharmachain.gateway.security.JwtAuthEntryPoint;
-import com.pharmachain.gateway.security.JwtAuthFilter;
+import com.pharmachain.gateway.security.JwtAuthenticationEntryPoint;
+import com.pharmachain.gateway.security.JwtAuthenticationFilter;
 import com.pharmachain.gateway.security.JwtTokenProvider;
 
 @Configuration
@@ -35,11 +35,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private CustomUserDetailService customUserDetailService;
 	
 	@Autowired
-	private JwtAuthEntryPoint unAuthorizedHandler;
+	private JwtAuthenticationEntryPoint unAuthorizedHandler;
 	
 	@Bean
-	public JwtAuthFilter jwtAuthFilter() {
-		return new JwtAuthFilter(jwtConfiguration, jwtTokenProvider); 
+	public JwtAuthenticationFilter jwtAuthFilter() {
+		return new JwtAuthenticationFilter(jwtConfiguration, jwtTokenProvider); 
 	}
 
 	@Override
