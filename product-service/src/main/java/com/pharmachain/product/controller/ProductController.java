@@ -32,13 +32,13 @@ public class ProductController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Product> addProduct(@RequestBody Product productDTO) throws ServiceException {
-		return new ResponseEntity<Product>(productService.addProduct(productDTO), HttpStatus.OK);
+	public ResponseEntity<Product> addProduct(@RequestBody Product product) throws ServiceException {
+		return new ResponseEntity<Product>(productService.addProduct(product), HttpStatus.OK);
 	}
 	
 	@PutMapping({"/{productId}"})
-	public ResponseEntity<Product> updateProduct(@PathVariable String productId, @RequestBody Product productDTO) throws ServiceException {
-		return new ResponseEntity<Product>(productService.updateProduct(productId, productDTO), HttpStatus.OK);
+	public ResponseEntity<Product> updateProduct(@PathVariable String productId, @RequestBody Product product) throws ServiceException {
+		return new ResponseEntity<Product>(productService.updateProduct(productId, product), HttpStatus.OK);
 	}
 	
 	@DeleteMapping({"/{productId}"})

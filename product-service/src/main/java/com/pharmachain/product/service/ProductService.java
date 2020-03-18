@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.pharmachain.product.domain.Ingredient;
 import com.pharmachain.product.domain.Product;
 import com.pharmachain.product.exception.ServiceException;
 import com.pharmachain.product.repository.ProductRepository;
@@ -75,13 +74,7 @@ public class ProductService {
 			p.setStrength(product.getStrength());
 			p.setPrice(product.getPrice());
 			p.setIsOTCApproved(product.getIsOTCApproved());
-			
-			product.getIngredients().stream().forEach(i -> {
-				Ingredient ingredient = new Ingredient();
-				ingredient.setName(i.getName());
-				ingredient.setQuantity(i.getQuantity());
-				p.getIngredients().add(ingredient);
-			});		
+			p.setIngredients(product.getIngredients());
 			// End -- Map the Updated Product
 
 			return productRepository.save(p);
