@@ -27,13 +27,14 @@ eureka:
 zuul:
   ignored-services: '*'
   prefix: /api
-  strip-prefix: false
   routes:
     product-service:
       path: /products/**
       service-id: PRODUCT-SERVICE
+      strip-prefix: false
     order-service:
       path: /orders/**
       service-id: ORDER-SERVICE
+      strip-prefix: false
   host:
     socket-timeout-millis: 30000

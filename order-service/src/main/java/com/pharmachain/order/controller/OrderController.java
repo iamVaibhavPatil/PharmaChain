@@ -45,7 +45,7 @@ public class OrderController {
 		orderService.deleteOrder(orderId);
 	}
 	
-	@GetMapping("/history")
+	@GetMapping("/history/{customerId}")
 	public ResponseEntity<List<Order>> orderHistory(@PathVariable String customerId) throws ServiceException {
 		return new ResponseEntity<List<Order>>(orderService.orderHistory(customerId), HttpStatus.OK);
 	}
