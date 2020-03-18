@@ -27,7 +27,7 @@ public class Product extends AuditEntity {
 	private String category;
 	private String packing;
 	private String strength;
-	private String price;
+	private long price;
 	private String isOTCApproved;
 	private List<Ingredient> ingredients;
 }

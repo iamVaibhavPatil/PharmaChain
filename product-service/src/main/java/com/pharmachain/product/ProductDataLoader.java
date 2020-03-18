@@ -45,7 +45,7 @@ public class ProductDataLoader implements ApplicationListener<ContextRefreshedEv
 		product1.setCategory("SCHEDULE H1");
 		product1.setPacking("BOT");
 		product1.setStrength("100 ML");
-		product1.setPrice("78.00");
+		product1.setPrice(7800);
 		product1.setIsOTCApproved("N");
 		ingredients1.add(new Ingredient("Codeine Phosphate", "5 mg"));
 		ingredients1.add(new Ingredient("Clorpheniramine Maleate", "4 mg"));
@@ -63,7 +63,7 @@ public class ProductDataLoader implements ApplicationListener<ContextRefreshedEv
 		product2.setCategory("SCHEDULE H");
 		product2.setPacking("TAB");
 		product2.setStrength("150 MG");
-		product2.setPrice("12.00");
+		product2.setPrice(1200);
 		product2.setIsOTCApproved("Y");
 		ingredients2.add(new Ingredient("Ranitidine", "150 mg"));
 		product2.setIngredients(ingredients2);
@@ -80,7 +80,7 @@ public class ProductDataLoader implements ApplicationListener<ContextRefreshedEv
 		product3.setCategory("SCHEDULE H");
 		product3.setPacking("TAB");
 		product3.setStrength("250 MG");
-		product3.setPrice("10.00");
+		product3.setPrice(1000);
 		product3.setIsOTCApproved("Y");
 		ingredients3.add(new Ingredient("Paracetamol", "250 mg"));
 		ingredients3.add(new Ingredient("Propyphenazone", "150 mg"));
@@ -99,7 +99,7 @@ public class ProductDataLoader implements ApplicationListener<ContextRefreshedEv
 		product4.setCategory("SCHEDULE H");
 		product4.setPacking("TAB");
 		product4.setStrength("0.5 MG");
-		product4.setPrice("25.00");
+		product4.setPrice(2500);
 		product4.setIsOTCApproved("N");
 		ingredients4.add(new Ingredient("Metamethasone", "500 mg"));
 		ingredients4.add(new Ingredient("Sodium Hydrogen Carbonate", "E500"));
@@ -118,7 +118,7 @@ public class ProductDataLoader implements ApplicationListener<ContextRefreshedEv
 		product5.setCategory("NARCOTIC");
 		product5.setPacking("TAB");
 		product5.setStrength("200 MG");
-		product5.setPrice("250.00");
+		product5.setPrice(25000);
 		product5.setIsOTCApproved("N");
 		ingredients5.add(new Ingredient("Ibuprofen", "200 mg"));
 		ingredients5.add(new Ingredient("Carnauba Wax", "10 mg"));
