@@ -2,7 +2,7 @@
 
 @include mat-core();
 
-$mat-primary-color: (
+/*$mat-primary-color: (
     50 : #e8f3fb,
     100 : #c6e0f4,
     200 : #a0cbed,
@@ -23,6 +23,39 @@ $mat-primary-color: (
         200 : #000000,
         300 : #000000,
         400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);*/
+
+$mat-primary-color: (
+    50 : #e3effa,
+    100 : #bad6f2,
+    200 : #8cbbe9,
+    300 : #5e9fe0,
+    400 : #3c8bd9,
+    500 : #1976d2,
+    600 : #166ecd,
+    700 : #1263c7,
+    800 : #0e59c1,
+    900 : #0846b6,
+    A100 : #e0eaff,
+    A200 : #adc6ff,
+    A400 : #7aa3ff,
+    A700 : #6191ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
         500 : #ffffff,
         600 : #ffffff,
         700 : #ffffff,
