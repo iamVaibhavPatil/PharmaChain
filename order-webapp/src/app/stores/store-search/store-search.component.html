@@ -1,0 +1,31 @@
+<mat-card class="mat-elevation-z3 no-radius">
+  <mat-card-content>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <label><mat-card-title>Stores</mat-card-title></label>
+        <div class="d-flex flex-row float-right">
+          <button mat-flat-button color="accent" type="button" (click)="onAddNewStore()">
+            <mat-icon>add</mat-icon>Add New Store
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <form [formGroup]="storeSearchForm" (ngSubmit)="onSearch()">
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Search Store By Name</mat-label>
+            <input matInput
+              placeholder="Store Name"
+              formControlName="storeName"
+              autocomplete="off"
+              appUppercase
+              appAutofocus>
+            <mat-hint>Please enter the name of the store</mat-hint>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<app-store-list></app-store-list>

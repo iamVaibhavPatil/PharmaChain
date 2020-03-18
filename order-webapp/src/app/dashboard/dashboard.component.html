@@ -1,0 +1,13 @@
+<mat-grid-list cols="2" rowHeight="350px">
+  <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+    <div *ngIf="card.name === 'summary'">
+      <app-summary-board></app-summary-board>
+    </div>
+    <div *ngIf="card.name === 'orders'">
+      <app-orders-board></app-orders-board>
+    </div>
+    <div *ngIf="card.name === 'payments'">
+      <app-payments-board></app-payments-board>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

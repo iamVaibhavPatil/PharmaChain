@@ -1,0 +1,19 @@
+<mat-card class="mt-2 mat-elevation-z3" matRipple style="cursor: pointer;" (click)="onEditStore()">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="p-1">
+        <span *ngIf="store.storeType === 'RETAIL'" class="badge success">R</span>
+        <span *ngIf="store.storeType === 'WHOLESALE'" class="badge primary">W</span>
+        {{store.storeName}} - {{ store.storeRegion }}
+      </div>
+    </div>
+    <div class="col-md-6" [ngClass]="{'d-none': (isTabOrHandset | async)}">
+      <div class="p-1">
+        {{ store.firstName }} {{ store.lastName }}
+        <span class="text-muted">{{store.mobileNumber}}</span>
+        <span *ngIf="store.verified === 'Y'" class="badge success float-right">VERIFIED</span>
+        <span *ngIf="store.verified === 'N'" class="badge warning float-right">NOT VERIFIED</span>
+      </div>
+    </div>
+  </div>
+</mat-card>

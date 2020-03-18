@@ -1,0 +1,62 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [ngClass]="{'hidden': !(isTabOrHandset | async)}"
+      [attr.role]="(isTabOrHandset | async) ? 'dialog' : 'navigation'"
+      [mode]="(isTabOrHandset | async) ? 'over' : 'side'"
+      [opened]="!(isTabOrHandset | async)">
+    <mat-toolbar color="primary" class="mat-elevation-z2">
+      <a [routerLink]="[ '/']" class="logo-main">
+        PharmaChain
+      </a>
+    </mat-toolbar>
+    <ng-template [ngIf]="isLoggedIn()">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/dashboard']"><mat-icon>dashboard</mat-icon> Dashboard</a>
+        <a mat-list-item [routerLink]="['/companies']"><mat-icon>location_city</mat-icon> Companies</a>
+        <a mat-list-item [routerLink]="['/stores']"><mat-icon>store</mat-icon> Stores</a>
+        <a mat-list-item [routerLink]="['/products']"><mat-icon>group_work</mat-icon> Products</a>
+        <a mat-list-item [routerLink]="['/inventory']"><mat-icon>art_track</mat-icon> Inventory</a>
+        <a mat-list-item [routerLink]="['/orders']"><mat-icon>shopping_cart</mat-icon> Orders</a>
+        <a mat-list-item [routerLink]="['/payments']"><mat-icon>payment</mat-icon> Payments</a>
+        <a mat-list-item [routerLink]="['/settings']"><mat-icon>gear</mat-icon> Settings</a>
+        <a mat-list-item (click)="onLogOut()"><mat-icon>payment</mat-icon> Log Out</a>
+      </mat-nav-list>
+    </ng-template>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z2">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isTabOrHandset | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>
+        <a [routerLink]="[ '/']" class="logo-main">
+          PharmaChain
+        </a>
+      </span>
+      <span class="header-spacer"></span>
+      <ng-template [ngIf]="isLoggedIn()">
+        <div *ngIf="!(isTabOrHandset | async)">
+          <a [routerLink]="['/dashboard']" mat-button><mat-icon>dashboard</mat-icon> Dashboard</a>
+          <a [routerLink]="['/companies']" mat-button><mat-icon>location_city</mat-icon> Companies</a>
+          <a [routerLink]="['/stores']" mat-button><mat-icon>store</mat-icon> Stores</a>
+          <a [routerLink]="['/products']" mat-button><mat-icon>group_work</mat-icon> Products</a>
+          <a [routerLink]="['/inventory']" mat-button><mat-icon>art_track</mat-icon> Inventory</a>
+          <a [routerLink]="['/orders']" mat-button><mat-icon>shopping_cart</mat-icon> Orders</a>
+          <a [routerLink]="['/payments']" mat-button><mat-icon>payment</mat-icon> Payments</a>
+        </div>
+        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>account_circle</mat-icon> {{ getUserName() }}</button>
+        <mat-menu #menu="matMenu" [overlapTrigger]="false">
+          <button mat-menu-item>Settings</button>
+          <button mat-menu-item (click)="onLogOut()">Log Out</button>
+        </mat-menu>
+      </ng-template>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

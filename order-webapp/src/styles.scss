@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/theme/variables";
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities";
+
+@import "assets/theme/reset";
+@import "assets/theme/ng-custom.scss";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.phc-card {
+    margin: 5px;
+}
+
+.no-radius {
+    border-radius: 0px !important;
+}
+
+.primary {
+    background: #4097db!important;
+    color: white
+}
+.secondary {
+    background: #6c757d!important;
+    color: white
+}
+.success {
+    background: #28A745!important;
+    color: white
+}
+.danger {
+    background: #F44336!important;
+    color: white
+}
+.warning {
+    background: #FDD835!important;
+    color: white
+}
+.info {
+    background: #17A2B8!important;
+    color: white
+}
+
+.badge {
+    padding: 5px 5px;
+    font-size: 75%;
+    font-weight: normal;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    min-height: 20px;
+    align-items: center;
+    display: inline-flex;   
+}

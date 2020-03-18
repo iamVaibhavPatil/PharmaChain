@@ -1,0 +1,21 @@
+$link-color: #4097db;
+$link-hover-color: currentColor;
+$link-hover-decoration: none;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 600px,
+    md: 960px,
+    lg: 1280px,
+    xl: 1600px
+);
+
+$container-max-widths: (
+    sm: 600px,
+    md: 960px,
+    lg: 1280px,
+    xl: 1600px
+);
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 10px !default;
