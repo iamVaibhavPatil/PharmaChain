@@ -1,0 +1,25 @@
+server:
+  port: 8881
+  
+spring:
+  application:
+    name: ORDER-SERVICE
+
+  data:
+    mongodb:
+      database: pharmachain
+      host: localhost
+      port: 27017
+      auto-index-creation: false
+      #username: root
+      #password: root
+
+  jackson:
+    default-property-inclusion: non-null
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
