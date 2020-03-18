@@ -1,14 +1,15 @@
 export class Auth {
-    public storeUser: StoreUser;
+    public customer: Customer;
     public jwtToken: string;
     constructor() {}
 }
 
-class StoreUser {
-    public storeId?: string;
-    public userName: string;
+class Customer {
+    public customerId?: string;
+    public email: string;
     public password: string;
-    public status?: string;
+    public storeName?: string;
+    public varified?: string;
     public roles?: string[];
     constructor() {}
 }

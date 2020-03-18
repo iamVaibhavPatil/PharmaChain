@@ -21,23 +21,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'userName': new FormControl(null, Validators.required),
+      'email': new FormControl(null, Validators.required),
       'password': new FormControl(null, Validators.required),
     });
   }
 
   onSubmit() {
     const auth = new Auth();
-    auth.storeUser = {
-      userName: this.loginForm.get('userName').value,
+    auth.customer = {
+      email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
     };
     this.authService.login(auth)
       .subscribe(
         response => {
           this.tokenService.saveToken(response.jwtToken);
-          this.tokenService.saveUsername(response.storeUser.userName);
-          this.tokenService.saveAuthorities(response.storeUser.roles);
+          this.tokenService.saveUsername(response.customer.email);
+          this.tokenService.saveAuthorities(response.customer.roles);
           this.router.navigate(['/dashboard'], { relativeTo: this.activatedRoute });
         }
       );
