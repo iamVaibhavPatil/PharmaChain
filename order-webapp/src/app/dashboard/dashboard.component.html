@@ -1,4 +1,4 @@
-<mat-grid-list cols="4" rowHeight="250px">
+<mat-grid-list cols="4" rowHeight="180px">
   <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
     <div *ngIf="card.name === 'total'">
       <app-summary-board></app-summary-board>
