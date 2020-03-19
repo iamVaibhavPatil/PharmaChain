@@ -12,4 +12,7 @@ export class OrdersBoardComponent implements OnInit {
   ngOnInit() {
   }
 
+  onCreateOrder() {
+  }
+
 }

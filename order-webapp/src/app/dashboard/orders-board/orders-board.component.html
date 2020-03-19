@@ -1,64 +1,51 @@
 <mat-card class="dashboard-card mat-elevation-z3 no-radius" >
   <mat-card-content>
-    <div>Orders</div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <label><mat-card-title>Recent Orders</mat-card-title></label>
+        <div class="d-flex flex-row float-right">
+          <button mat-flat-button color="accent" type="button" (click)="onCreateOrder()">
+            <mat-icon>add</mat-icon>Create New Order
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <mat-card class="phc-card order-card mat-elevation-z3">
+      <mat-card-content>
+      <div class="row">
+        <div class="col-sm-4">
+          Order Date
+        </div>
+        <div class="col-sm-4">
+          <span>Number of Items</span>
+        </div>
+        <div class="col-sm-3">
+          <span>Order Amount</span>
+        </div>
+        <div class="col-sm-1">
+          <span class="float-right">Order Status</span>
+        </div>
+      </div>
+      </mat-card-content>
+    </mat-card>
 
     <a href="#">
-      <mat-card class="phc-card order-card">
+      <mat-card class="phc-card order-card mat-elevation-z3">
         <mat-card-content>
         <div class="row">
           <div class="col-sm-4">
-            <mat-checkbox>SANJIVANI MEDICAL</mat-checkbox>
+            <mat-checkbox>19-MAR-2020</mat-checkbox>
+          </div>
+          <div class="col-sm-4">
+            <span>10</span>
           </div>
           <div class="col-sm-3">
             <span>Rs.10000</span>
           </div>
-          <div class="col-sm-4">
-            <span>Gopal Patil</span>
-          </div>
           <div class="col-sm-1">
             <span class="float-right badge primary">In Progress</span>
-          </div>
-        </div>
-        </mat-card-content>
-      </mat-card>
-    </a>
-
-    <a href="#">
-      <mat-card class="phc-card order-card">
-        <mat-card-content>
-        <div class="row">
-          <div class="col-sm-4">
-            <mat-checkbox>MARUDHAR MEDICAL</mat-checkbox>
-          </div>
-          <div class="col-sm-3">
-            <span>Rs.12000</span>
-          </div>
-          <div class="col-sm-4">
-            <span>Rahul Chaudhary</span>
-          </div>
-          <div class="col-sm-1">
-            <span class="float-right badge success">Complete</span>
-          </div>
-        </div>
-        </mat-card-content>
-      </mat-card>
-    </a>
-
-    <a href="#">
-      <mat-card class="phc-card order-card">
-        <mat-card-content>
-        <div class="row">
-          <div class="col-sm-4">
-            <mat-checkbox>RAJ MEDICAL</mat-checkbox>
-          </div>
-          <div class="col-sm-3">
-            <span>Rs.5000</span>
-          </div>
-          <div class="col-sm-4">
-            <span>John Doe</span>
-          </div>
-          <div class="col-sm-1">
-            <span class="float-right badge danger">Cancelled</span>
           </div>
         </div>
         </mat-card-content>

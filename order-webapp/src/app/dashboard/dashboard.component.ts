@@ -18,7 +18,7 @@ export class DashboardComponent {
           { name: 'inprogress', cols: 2, rows: 1 },
           { name: 'cancelled', cols: 2, rows: 1 },
           { name: 'completed', cols: 2, rows: 1 },
-          { name: 'orders', cols: 2, rows: 2 }
+          { name: 'orders', cols: 4, rows: 2 }
         ];
       }
       return [
@@ -26,7 +26,7 @@ export class DashboardComponent {
         { name: 'inprogress', cols: 1, rows: 1 },
         { name: 'cancelled', cols: 1, rows: 1 },
         { name: 'completed', cols: 1, rows: 1 },
-        { name: 'orders', cols: 1, rows: 2 },
+        { name: 'orders', cols: 4, rows: 2 },
       ];
     })
   );
