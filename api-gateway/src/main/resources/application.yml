@@ -36,5 +36,9 @@ zuul:
       path: /orders/**
       service-id: ORDER-SERVICE
       strip-prefix: false
+    dashboard-service:
+      path: /dashboards/**
+      service-id: DASHBOARD-SERVICE
+      strip-prefix: false
   host:
     socket-timeout-millis: 30000
