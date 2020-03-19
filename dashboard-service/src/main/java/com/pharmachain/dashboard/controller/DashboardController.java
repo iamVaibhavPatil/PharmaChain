@@ -3,7 +3,7 @@ package com.pharmachain.dashboard.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +19,7 @@ public class DashboardController {
 	@Autowired
 	private OrderService orderService;
 	
-	@GetMapping("/ordersummary")
+	@PostMapping("/ordersummary")
 	public ResponseEntity<OrderSummary> getOrderSummary(@RequestBody OrderSummary orderSummary) throws ServiceException {
 		return new ResponseEntity<OrderSummary>(orderService.getOrderSummary(orderSummary), HttpStatus.OK);
 	}

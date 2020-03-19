@@ -1,18 +1,18 @@
 <mat-grid-list cols="4" rowHeight="180px">
-  <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-    <div *ngIf="card.name === 'total'">
-      <app-summary-board></app-summary-board>
+  <mat-grid-tile *ngFor="let cardEl of cards | async" [colspan]="cardEl.cols" [rowspan]="cardEl.rows">
+    <div *ngIf="cardEl.name === 'total'">
+      <app-summary-board [card]="cardEl"></app-summary-board>
     </div>
-    <div *ngIf="card.name === 'inprogress'">
-      <app-summary-board></app-summary-board>
+    <div *ngIf="cardEl.name === 'inprogress'">
+      <app-summary-board [card]="cardEl"></app-summary-board>
     </div>
-    <div *ngIf="card.name === 'cancelled'">
-      <app-summary-board></app-summary-board>
+    <div *ngIf="cardEl.name === 'cancelled'">
+      <app-summary-board [card]="cardEl"></app-summary-board>
     </div>
-    <div *ngIf="card.name === 'completed'">
-      <app-summary-board></app-summary-board>
+    <div *ngIf="cardEl.name === 'completed'">
+      <app-summary-board [card]="cardEl"></app-summary-board>
     </div>
-    <div *ngIf="card.name === 'orders'">
+    <div *ngIf="cardEl.name === 'orders'">
       <app-orders-board></app-orders-board>
     </div>
   </mat-grid-tile>
