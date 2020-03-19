@@ -16,7 +16,6 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SummaryBoardComponent } from './dashboard/summary-board/summary-board.component';
 import { OrdersBoardComponent } from './dashboard/orders-board/orders-board.component';
-import { PaymentsBoardComponent } from './dashboard/payments-board/payments-board.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { PaymentsBoardComponent } from './dashboard/payments-board/payments-boar
     MainNavComponent,
     DashboardComponent,
     SummaryBoardComponent,
-    OrdersBoardComponent,
-    PaymentsBoardComponent
+    OrdersBoardComponent
   ],
   imports: [
     BrowserModule,
