@@ -13,7 +13,6 @@ export class SummaryBoardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.card);
   }
 
 }

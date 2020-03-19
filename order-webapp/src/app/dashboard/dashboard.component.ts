@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { DashboardService } from './dashboard.service';
 import { OrderSummary } from './ordersummary.model';
 import { SummaryBoard } from './summary-board/summary-board.model';
+import { TokenService } from '../shared/services/token.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,11 +16,12 @@ export class DashboardComponent implements OnInit {
   cards;
 
   constructor(private breakpointObserver: BreakpointObserver,
-              private dashboardService: DashboardService) {}
+              private dashboardService: DashboardService,
+              private tokenService: TokenService) {}
 
   ngOnInit() {
     const orderSummaryRequest = new OrderSummary();
-    orderSummaryRequest.customerId = 'da01555c-c4e9-4c4a-9e3b-360ef7a70c62';
+    orderSummaryRequest.customerId = this.tokenService.getCustomerId();
     this.dashboardService.getOrderSummary(orderSummaryRequest).subscribe((orderSummary: OrderSummary) => {
       this.updateOrderSummary(orderSummary);
     });

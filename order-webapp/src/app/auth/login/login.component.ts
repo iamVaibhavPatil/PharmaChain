@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
           this.tokenService.saveToken(response.jwtToken);
           this.tokenService.saveUsername(response.customer.email);
           this.tokenService.saveAuthorities(response.customer.roles);
+          this.tokenService.saveCustomerId(response.customer.customerId);
           this.router.navigate(['/dashboard'], { relativeTo: this.activatedRoute });
         }
       );
