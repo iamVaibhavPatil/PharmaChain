@@ -18,7 +18,7 @@ public class DashboardController {
 
 	@Autowired
 	private OrderService orderService;
-	
+
 	@PostMapping("/ordersummary")
 	public ResponseEntity<OrderSummary> getOrderSummary(@RequestBody OrderSummary orderSummary) throws ServiceException {
 		return new ResponseEntity<OrderSummary>(orderService.getOrderSummary(orderSummary), HttpStatus.OK);
