@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Store } from 'src/app/stores/store.model';
+import { Store } from '../../../../orders/store.model';
 
 @Component({
   selector: 'app-store-item',

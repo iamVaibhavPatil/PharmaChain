@@ -7,8 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RoutingModule } from './routing.module';
 import { MaterialModule } from './material.module';
 import { SharedModule } from './shared/shared.module';
-import { StoresModule } from './stores/stores.module';
-// import { CompaniesModule } from './companies/companies.module';
+import { OrdersModule } from './orders/orders.module';
 import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
@@ -33,8 +32,7 @@ import { OrdersBoardComponent } from './dashboard/orders-board/orders-board.comp
     MaterialModule,
     RoutingModule,
     SharedModule,
-    StoresModule,
-    // CompaniesModule,
+    OrdersModule,
     AuthModule
   ],
   providers: [],

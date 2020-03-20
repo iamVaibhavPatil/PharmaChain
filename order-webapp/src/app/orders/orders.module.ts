@@ -28,4 +28,4 @@ import { StoreUsersComponent } from './store-users/store-users.component';
     SharedModule
   ]
 })
-export class StoresModule { }
+export class OrdersModule { }
