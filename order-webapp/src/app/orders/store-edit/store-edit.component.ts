@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DataService } from 'src/app/shared/services/data.service';
-import { StoreService } from '../store.service';
+import { OrderService } from '../order.service';
 import { Region } from 'src/app/shared/models/region.model';
 import { State } from 'src/app/shared/models/state.model';
 import { StoreType } from 'src/app/shared/models/storetype.model';
@@ -27,7 +27,7 @@ export class StoreEditComponent implements OnInit {
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private dataService: DataService,
-              private storeService: StoreService,
+              private orderService: OrderService,
               private alertService: AlertService) { }
 
   ngOnInit() {
@@ -51,7 +51,7 @@ export class StoreEditComponent implements OnInit {
 
     // If Edit Mode, then get the details of Store and Patch the Form
     if (this.editMode) {
-      this.storeService.getStore(this.storeId)
+      this.orderService.getStore(this.storeId)
           .subscribe((store: Store) => {
             this.patchStoreForm(store);
           });
@@ -144,13 +144,13 @@ export class StoreEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.storeService.updateStore(this.storeId, this.storeForm.value)
+      this.orderService.updateStore(this.storeId, this.storeForm.value)
           .subscribe(response => {
             this.alertService.showSuccess('STORE UPDATED SUCCESSFULLY');
             this.onCancel();
           });
     } else {
-      this.storeService.addStore(this.storeForm.value)
+      this.orderService.addStore(this.storeForm.value)
           .subscribe(response => {
             this.alertService.showSuccess('STORE ADDED SUCCESSFULLY');
             this.onCancel();
@@ -163,7 +163,7 @@ export class StoreEditComponent implements OnInit {
   }
 
   onDelete() {
-    this.storeService.deleteStore(this.storeId)
+    this.orderService.deleteStore(this.storeId)
         .subscribe(response => {
           this.alertService.showSuccess('STORE DELETED SUCCESSFULLY');
           this.onCancel();

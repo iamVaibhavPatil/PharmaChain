@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { StoresComponent } from './stores.component';
+import { OrdersComponent } from './orders.component';
 import { StoreSearchComponent } from './store-search/store-search.component';
 import { StoreEditComponent } from './store-edit/store-edit.component';
 
-const storesRoutes: Routes = [
+const ordersRoutes: Routes = [
     { path: '',
-        component: StoresComponent,
+        component: OrdersComponent,
         children: [
             { path: '', component: StoreSearchComponent },
             { path: 'new', component: StoreEditComponent },
@@ -18,8 +18,8 @@ const storesRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(storesRoutes)
+    RouterModule.forChild(ordersRoutes)
   ],
   exports: [RouterModule]
 })
-export class StoresRoutingModule {}
+export class OrdersRoutingModule {}

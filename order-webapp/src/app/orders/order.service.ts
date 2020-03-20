@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class StoreService {
+export class OrderService {
 
   baseAPIUrl = environment.baseAPIUrl + '/stores';
   storesUpdated = new Subject<Store[]>();

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { StoreService } from '../../store.service';
+import { OrderService } from '../../order.service';
 import { Store } from '../../store.model';
 
 @Component({
@@ -13,14 +13,14 @@ export class StoreListComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
-              private storeService: StoreService) { }
+              private orderService: OrderService) { }
 
   storesSubscription: Subscription;
   stores: Store[];
 
   ngOnInit() {
     // Watch for Store Search Results
-    this.storesSubscription = this.storeService.storesUpdated.subscribe((stores: Store[]) => {
+    this.storesSubscription = this.orderService.storesUpdated.subscribe((stores: Store[]) => {
       this.stores = stores;
     });
   }
