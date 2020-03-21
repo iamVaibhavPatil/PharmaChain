@@ -4,6 +4,7 @@ import { StoreEditComponent } from './store-edit/store-edit.component';
 import { StoreListComponent } from './store-search/store-list/store-list.component';
 import { StoreItemComponent } from './store-search/store-list/store-item/store-item.component';
 import { StoreSearchComponent } from './store-search/store-search.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
@@ -13,6 +14,7 @@ import { OrdersRoutingModule } from './orders-routing.module';
 @NgModule({
   declarations: [
     OrdersComponent,
+    OrderHistoryComponent,
     StoreEditComponent,
     StoreListComponent,
     StoreItemComponent,
@@ -24,6 +26,9 @@ import { OrdersRoutingModule } from './orders-routing.module';
     OrdersRoutingModule,
     MaterialModule,
     SharedModule
+  ],
+  exports: [
+    OrderHistoryComponent
   ]
 })
 export class OrdersModule { }

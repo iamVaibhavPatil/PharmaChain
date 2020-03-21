@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { OrdersModule } from './orders/orders.module';
 import { AuthModule } from './auth/auth.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { OrdersModule } from './orders/orders.module';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { RoleGuard } from './shared/guards/role.guard';
 
@@ -14,6 +14,10 @@ export function loadAuthModule() {
   return AuthModule;
 }
 
+export function loadDashboardModule() {
+  return DashboardModule;
+}
+
 const routes: Routes = [
   {
     path: '',
@@ -21,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    loadChildren: loadDashboardModule,
     canActivate: [AuthGuard]
     /*data: {allowedRole: 'ROLE_SUPER_ADMIN'}*/
   },

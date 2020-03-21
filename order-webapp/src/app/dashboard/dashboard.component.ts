@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
           cancelledSummary.rows = 1;
           completedSummary.cols = 2;
           completedSummary.rows = 1;
-          order.cols = 4;
+          order.cols = 2;
           order.rows = 2;
           return [
             totalSummary,
@@ -59,20 +59,17 @@ export class DashboardComponent implements OnInit {
           ];
         } else {
           totalSummary.cols = 1;
-          totalSummary.rows = 1;
+          totalSummary.rows = 2;
           progressSummary.cols = 1;
           progressSummary.rows = 1;
           cancelledSummary.cols = 1;
           cancelledSummary.rows = 1;
           completedSummary.cols = 1;
           completedSummary.rows = 1;
-          order.cols = 4;
+          order.cols = 1;
           order.rows = 2;
           return [
             totalSummary,
-            progressSummary,
-            cancelledSummary,
-            completedSummary,
             order
           ];
         }
