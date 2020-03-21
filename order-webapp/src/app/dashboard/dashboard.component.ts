@@ -3,8 +3,8 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { DashboardService } from './dashboard.service';
 import { OrderSummary } from './ordersummary.model';
-import { SummaryBoard } from './summary-board/summary-board.model';
 import { TokenService } from '../shared/services/token.service';
+import { DashboardWidget } from './dashboard-widget/dashboard-widget.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,18 +22,18 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     const orderSummaryRequest = new OrderSummary();
     orderSummaryRequest.customerId = this.tokenService.getCustomerId();
-    this.dashboardService.getOrderSummary(orderSummaryRequest).subscribe((orderSummary: OrderSummary) => {
+    this.dashboardService.getDashboardOrderSummary(orderSummaryRequest).subscribe((orderSummary: OrderSummary) => {
       this.updateOrderSummary(orderSummary);
     });
   }
 
   updateOrderSummary(orderSummary) {
 
-    const totalSummary = new SummaryBoard('total', 'Total', 'bg-info', orderSummary.total);
-    const progressSummary = new SummaryBoard('inprogress', 'In Progress', 'bg-warning', orderSummary.inProgress);
-    const cancelledSummary = new SummaryBoard('cancelled', 'Cancelled', 'bg-danger', orderSummary.cancelled);
-    const completedSummary = new SummaryBoard('completed', 'Completed', 'bg-success', orderSummary.completed);
-    const order = new SummaryBoard('orders');
+    const totalSummary = new DashboardWidget('total', 'Total', 'bg-info', orderSummary.total);
+    const progressSummary = new DashboardWidget('inprogress', 'In Progress', 'bg-warning', orderSummary.inProgress);
+    const cancelledSummary = new DashboardWidget('cancelled', 'Cancelled', 'bg-danger', orderSummary.cancelled);
+    const completedSummary = new DashboardWidget('completed', 'Completed', 'bg-success', orderSummary.completed);
+    const order = new DashboardWidget('orders');
 
     /** Based on the screen size, switch from standard to one column per row */
     this.cards = this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet]).pipe(

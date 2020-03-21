@@ -1,7 +1,7 @@
 <mat-grid-list cols="2" rowHeight="350px">
   <mat-grid-tile *ngFor="let cardEl of cards | async" [colspan]="cardEl.cols" [rowspan]="cardEl.rows">
     <div *ngIf="cardEl.name === 'total'">
-      <app-summary-board [card]="cardEl"></app-summary-board>
+      <app-dashboard-widget [card]="cardEl"></app-dashboard-widget>
     </div>
     <div *ngIf="cardEl.name === 'orders'">
       <app-order-history></app-order-history>

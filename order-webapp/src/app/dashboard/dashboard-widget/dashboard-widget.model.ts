@@ -1,4 +1,4 @@
-export class SummaryBoard {
+export class DashboardWidget {
     public name: string;
     public cols: number;
     public rows: number;

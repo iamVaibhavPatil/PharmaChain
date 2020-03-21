@@ -13,7 +13,7 @@ export class DashboardService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getOrderSummary(orderSummary: OrderSummary) {
+  public getDashboardOrderSummary(orderSummary: OrderSummary) {
     return this.httpClient.post<OrderSummary>(this.baseAPIUrl + '/ordersummary', orderSummary);
   }
 }
