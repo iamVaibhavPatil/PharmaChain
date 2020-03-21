@@ -62,7 +62,7 @@
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [
-      true,
+      false,
       "as-needed"
     ],
     "object-literal-sort-keys": false,
@@ -83,7 +83,8 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "no-string-literal": false
   },
   "rulesDirectory": [
     "codelyzer"
