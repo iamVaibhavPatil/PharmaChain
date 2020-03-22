@@ -3,14 +3,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DataService } from 'src/app/shared/services/data.service';
 import { OrderService } from '../order.service';
-import { Region } from 'src/app/shared/models/region.model';
-import { State } from 'src/app/shared/models/state.model';
-import { StoreType } from 'src/app/shared/models/storetype.model';
-import { Store } from '../store.model';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import * as moment from 'moment';
 import { debounceTime, tap, switchMap, finalize } from 'rxjs/operators';
 import { Product } from '../product.model';
+import { Order } from '../order.model';
 
 @Component({
   selector: 'app-order-edit',
@@ -21,10 +18,7 @@ export class OrderEditComponent implements OnInit {
 
   orderId: string;
   editMode = false;
-  storeForm: FormGroup;
-  states: State[];
-  regions: Region[];
-  storeTypes: StoreType[];
+  orderForm: FormGroup;
 
   filteredProducts: Product[];
   isLoading = false;
@@ -37,11 +31,6 @@ export class OrderEditComponent implements OnInit {
 
   ngOnInit() {
 
-    // Load Static Data
-    this.dataService.getStoreTypes().subscribe((storeTypes: StoreType[]) => { this.storeTypes = storeTypes; });
-    this.dataService.getRegions().subscribe((regions: Region[]) => { this.regions = regions; });
-    this.dataService.getStates().subscribe((states: State[]) => { this.states = states; });
-
     // Check for Edit or New
     this.activatedRoute.params.subscribe((params: Params) => {
       if (params['orderId'] != null && params['orderId'].length > 0) {
@@ -51,7 +40,7 @@ export class OrderEditComponent implements OnInit {
       this.initForm();
     });
 
-    this.storeForm
+    this.orderForm
       .get('productName')
       .valueChanges
       .pipe(
@@ -85,129 +74,60 @@ export class OrderEditComponent implements OnInit {
 
   initForm() {
 
-    // If Edit Mode, then get the details of Store and Patch the Form
+    // If Edit Mode, then get the details of Order and Patch the Form
     if (this.editMode) {
-      this.orderService.getStore(this.orderId)
-          .subscribe((store: Store) => {
-            this.patchStoreForm(store);
+      this.orderService.getOrder(this.orderId)
+          .subscribe((order: Order) => {
+            this.patchOrderForm(order);
           });
     }
 
     // Initiate the form
-    this.storeForm = new FormGroup({
-      'productName': new FormControl(null),
-      'storeId': new FormControl(this.orderId),
-      'storeType': new FormControl(null, Validators.required),
-      'storeRegion': new FormControl(null, Validators.required),
-      'storeName': new FormControl(null, Validators.required),
-      'firstName': new FormControl(null, Validators.required),
-      'lastName': new FormControl(null, Validators.required),
-      'email': new FormControl(null, Validators.email),
-      'mobileNumber': new FormControl(null, [Validators.required, Validators.min(10)]),
-      'address': new FormGroup({
-        'type': new FormControl('1', Validators.required),
-        'addressLine1': new FormControl(null, Validators.required),
-        'addressLine2': new FormControl(null),
-        'city': new FormControl(null, Validators.required),
-        'state': new FormControl(null, Validators.required),
-        'postalCode': new FormControl(null, Validators.required),
-        'country': new FormControl('IN', Validators.required)
-      }),
-      'taxInfo': new FormGroup({
-        'gstNumber': new FormControl(null),
-        'panNumber': new FormControl(null, Validators.required),
-        'vatNumber': new FormControl(null)
-      }),
-      'licenseInfo': new FormGroup({
-        'licenseNumber': new FormControl(null, Validators.required),
-        'issueDate': new FormControl(null, Validators.required),
-        'expiryDate': new FormControl(null, Validators.required),
-        'imageUrl': new FormControl(null)
-      }),
-      'creditInfo': new FormGroup({
-        'creditPeriod': new FormControl('15', Validators.required),
-        'discountBefore': new FormControl('0', Validators.required),
-        'discountAfter': new FormControl('0', Validators.required),
-        'billingAmountLimit': new FormControl('100000', Validators.required),
-        'orderAmountLimit': new FormControl('10000', Validators.required)
-      }),
-      'verified': new FormControl('Y'),
-      'status': new FormControl('A')
+    this.orderForm = new FormGroup({
+      'orderId': new FormControl(this.orderId),
+      'customerId': new FormControl(null),
+      'productName': new FormControl(null)
     });
   }
 
   // Patch the Form for Update
-  patchStoreForm(store: Store) {
-    this.storeForm.patchValue({
-      'storeId': store.storeId,
-      'storeType': store.storeType,
-      'storeRegion': store.storeRegion,
-      'storeName': store.storeName,
-      'firstName': store.firstName,
-      'lastName': store.lastName,
-      'email': store.email,
-      'mobileNumber': store.mobileNumber,
-      'address': {
-        'type': store.address.type,
-        'addressLine1': store.address.addressLine1,
-        'addressLine2': store.address.addressLine2,
-        'city': store.address.city,
-        'state': store.address.state,
-        'postalCode': store.address.postalCode,
-        'country': store.address.country
-      },
-      'taxInfo': {
-        'gstNumber': store.taxInfo.gstNumber,
-        'panNumber': store.taxInfo.panNumber,
-        'vatNumber': store.taxInfo.vatNumber
-      },
-      'licenseInfo': {
-        'licenseNumber': store.licenseInfo.licenseNumber,
-        'issueDate': moment(store.licenseInfo.issueDate),
-        'expiryDate': moment(store.licenseInfo.expiryDate),
-        'imageUrl': store.licenseInfo.imageUrl
-      },
-      'creditInfo': {
-        'creditPeriod': store.creditInfo.creditPeriod,
-        'discountBefore': store.creditInfo.discountBefore,
-        'discountAfter': store.creditInfo.discountAfter,
-        'billingAmountLimit': store.creditInfo.billingAmountLimit,
-        'orderAmountLimit': store.creditInfo.orderAmountLimit
-      },
-      'verified': store.verified,
-      'status': store.status
+  patchOrderForm(order: Order) {
+    this.orderForm.patchValue({
+      'orderId': new FormControl(order.orderId),
+      'customerId': new FormControl(order.customerId),
+      'productName': new FormControl(order.orderItems[0].productName)
     });
   }
 
   onSubmit() {
     if (this.editMode) {
-      this.orderService.updateStore(this.orderId, this.storeForm.value)
+      this.orderService.updateOrder(this.orderId, this.orderForm.value)
           .subscribe(response => {
-            this.alertService.showSuccess('STORE UPDATED SUCCESSFULLY');
+            this.alertService.showSuccess('ORDER UPDATED SUCCESSFULLY');
             this.onCancel();
           });
     } else {
-      this.orderService.addStore(this.storeForm.value)
+      this.orderService.createOrder(this.orderForm.value)
           .subscribe(response => {
-            this.alertService.showSuccess('STORE ADDED SUCCESSFULLY');
+            this.alertService.showSuccess('ORDER CREATED SUCCESSFULLY');
             this.onCancel();
           });
     }
   }
 
   onCancel() {
-    this.router.navigate(['/stores'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['/dashboard'], { relativeTo: this.activatedRoute });
   }
 
   onDelete() {
-    this.orderService.deleteStore(this.orderId)
+    this.orderService.deleteOrder(this.orderId)
         .subscribe(response => {
-          this.alertService.showSuccess('STORE DELETED SUCCESSFULLY');
+          this.alertService.showSuccess('ORDER DELETED SUCCESSFULLY');
           this.onCancel();
         });
   }
 
   onReset() {
-    this.storeForm.reset();
+    this.orderForm.reset();
   }
 }
