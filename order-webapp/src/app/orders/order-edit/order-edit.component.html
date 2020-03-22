@@ -10,6 +10,7 @@
 
     <form [formGroup]="storeForm" (ngSubmit)="onSubmit()">
 
+      <input type="hidden" formControlName="storeId" />
 
       <div class="row">
         <div class="col-md-12">
@@ -21,10 +22,10 @@
               placeholder="Search product to order online"
               autocomplete="off"
               appUppercase>
-              <mat-autocomplete #auto="matAutocomplete">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
                 <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
                 <ng-container *ngIf="!isLoading">
-                  <mat-option *ngFor="let product of filteredProducts" [value]="product.productId">
+                  <mat-option *ngFor="let product of filteredProducts" [value]="product">
                     <span><b>{{product.productName}}</b> ({{product.companyName}})</span>
                   </mat-option>
                 </ng-container>
@@ -32,8 +33,6 @@
             </mat-form-field>
         </div>
       </div>
-
-      <input type="hidden" formControlName="storeId" />
 
       <mat-accordion multi="true">  
         

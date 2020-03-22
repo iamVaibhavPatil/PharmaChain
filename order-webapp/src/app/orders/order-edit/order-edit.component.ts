@@ -51,14 +51,16 @@ export class OrderEditComponent implements OnInit {
       this.initForm();
     });
 
-    this.storeForm.valueChanges
+    this.storeForm
+      .get('productName')
+      .valueChanges
       .pipe(
-        debounceTime(500),
+        debounceTime(300),
         tap(() => {
           this.filteredProducts = [];
           this.isLoading = true;
         }),
-        switchMap(value => this.orderService.searchProducts(value.productName)
+        switchMap(value => this.orderService.searchProducts(value)
           .pipe(
             finalize(() => {
               this.isLoading = false;
@@ -72,9 +74,13 @@ export class OrderEditComponent implements OnInit {
         } else {
           this.filteredProducts = data;
         }
-        console.log(this.filteredProducts);
       });
+  }
 
+  displayFn(product: Product) {
+    if (product) {
+      return product.productName;
+    }
   }
 
   initForm() {
