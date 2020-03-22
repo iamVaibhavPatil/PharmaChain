@@ -28,8 +28,8 @@ export class DashboardComponent implements OnInit {
   }
 
   updateOrderSummary(orderSummary) {
-    const totalSummary = new DashboardWidget('total', 'Total', 'bg-info', orderSummary.total);
-    const progressSummary = new DashboardWidget('inprogress', 'In Progress', 'bg-warning', orderSummary.inProgress);
+    const totalSummary = new DashboardWidget('total', 'Total', 'bg-warning', orderSummary.total);
+    const progressSummary = new DashboardWidget('inprogress', 'In Progress', 'bg-primary', orderSummary.inProgress);
     const cancelledSummary = new DashboardWidget('cancelled', 'Cancelled', 'bg-danger', orderSummary.cancelled);
     const completedSummary = new DashboardWidget('completed', 'Completed', 'bg-success', orderSummary.completed);
     const order = new DashboardWidget('orders');

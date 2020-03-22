@@ -2,16 +2,18 @@
     <mat-card-content>
         <div class="row">
             <div class="col-sm-4">
-                <mat-checkbox>19-MAR-2020</mat-checkbox>
+                <mat-checkbox>{{order.orderIssueDate}}</mat-checkbox>
             </div>
             <div class="col-sm-4" [ngClass]="{'d-none': (isHandset | async)}">
-                <span>10</span>
+                <span>{{order.totalItems}}</span>
             </div>
             <div class="col-sm-3" [ngClass]="{'d-none': (isHandset | async)}">
-                <span>Rs.10000</span>
+                <span>Rs {{order.netPayoutAmount}}</span>
             </div>
             <div class="col-sm-1">
-                <span class="float-right badge primary">In Progress</span>
+                <span *ngIf="order.orderStatus == 'COMPLETED'" class="float-right badge success">Completed</span>
+                <span *ngIf="order.orderStatus == 'IN_PROGRESS'" class="float-right badge primary">In Progress</span>
+                <span *ngIf="order.orderStatus == 'CANCELLED'" class="float-right badge danger">Cancelled</span>
             </div>
         </div>
     </mat-card-content>
