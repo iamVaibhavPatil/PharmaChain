@@ -24,6 +24,6 @@
         <span class="float-right">Status</span>
       </div>
     </div>
-    <app-order-item></app-order-item>
+    <app-order-item *ngFor="let orderEl of orders" [order]="orderEl"></app-order-item>
   </mat-card-content>
 </mat-card>
