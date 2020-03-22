@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Order } from './order.model';
+import { Product } from './product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,10 @@ export class OrderService {
 
   public searchStore(storeName: string) {
     return this.httpClient.get<Store[]>(this.baseAPIUrl + '/search?q=' + storeName);
+  }
+
+  public searchProducts(productName: string) {
+    console.log(productName);
+    return this.httpClient.get<Product[]>(environment.baseAPIUrl + '/products/search?q=' + productName);
   }
 }

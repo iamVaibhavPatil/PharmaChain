@@ -9,6 +9,8 @@ import { StoreType } from 'src/app/shared/models/storetype.model';
 import { Store } from '../store.model';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import * as moment from 'moment';
+import { debounceTime, tap, switchMap, finalize } from 'rxjs/operators';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'app-order-edit',
@@ -23,6 +25,9 @@ export class OrderEditComponent implements OnInit {
   states: State[];
   regions: Region[];
   storeTypes: StoreType[];
+
+  filteredProducts: Product[];
+  isLoading = false;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -45,6 +50,31 @@ export class OrderEditComponent implements OnInit {
       this.editMode = params['orderId'] != null;
       this.initForm();
     });
+
+    this.storeForm.valueChanges
+      .pipe(
+        debounceTime(500),
+        tap(() => {
+          this.filteredProducts = [];
+          this.isLoading = true;
+        }),
+        switchMap(value => this.orderService.searchProducts(value.productName)
+          .pipe(
+            finalize(() => {
+              this.isLoading = false;
+            }),
+          )
+        )
+      )
+      .subscribe((data: Product[]) => {
+        if (data === undefined) {
+          this.filteredProducts = [];
+        } else {
+          this.filteredProducts = data;
+        }
+        console.log(this.filteredProducts);
+      });
+
   }
 
   initForm() {
@@ -59,6 +89,7 @@ export class OrderEditComponent implements OnInit {
 
     // Initiate the form
     this.storeForm = new FormGroup({
+      'productName': new FormControl(null),
       'storeId': new FormControl(this.orderId),
       'storeType': new FormControl(null, Validators.required),
       'storeRegion': new FormControl(null, Validators.required),

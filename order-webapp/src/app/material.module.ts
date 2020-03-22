@@ -29,6 +29,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 export const CUSTOM_DATE_FORMAT = {
     parse: {
@@ -72,7 +73,8 @@ export const DATE_FORMAT = [
         MatSortModule,
         MatExpansionModule,
         MatSnackBarModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatAutocompleteModule
     ],
     exports: [
         LayoutModule,
@@ -98,7 +100,8 @@ export const DATE_FORMAT = [
         MatSortModule,
         MatExpansionModule,
         MatSnackBarModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatAutocompleteModule
     ],
     providers: [
         DATE_FORMAT
