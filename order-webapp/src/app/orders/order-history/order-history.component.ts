@@ -33,6 +33,6 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   onCreateOrder() {
-    this.router.navigateByUrl('/orders/new');
+    this.router.navigateByUrl('/order/new');
   }
 }

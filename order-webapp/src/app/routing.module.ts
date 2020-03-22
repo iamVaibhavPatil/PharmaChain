@@ -30,7 +30,7 @@ const routes: Routes = [
     /*data: {allowedRole: 'ROLE_SUPER_ADMIN'}*/
   },
   {
-    path: 'orders',
+    path: 'order',
     loadChildren: loadOrdersModule,
     canActivate: [AuthGuard]
   }

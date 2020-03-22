@@ -27,6 +27,7 @@ export class OrderItemComponent implements OnInit {
   }
 
   onEditOrder() {
-    this.router.navigate(['edit', this.order.orderId], { relativeTo: this.activatedRoute });
+    // this.router.navigate(['edit', this.order.orderId], { relativeTo: this.activatedRoute });
+    this.router.navigateByUrl('order/edit/' + this.order.orderId);
   }
 }
