@@ -14,6 +14,10 @@ import { DashboardWidget } from './dashboard-widget/dashboard-widget.model';
 export class DashboardComponent implements OnInit {
 
   cards;
+  totalSummary;
+  progressSummary;
+  cancelledSummary;
+  completedSummary;
 
   constructor(private breakpointObserver: BreakpointObserver,
               private dashboardService: DashboardService,
@@ -29,14 +33,13 @@ export class DashboardComponent implements OnInit {
 
   updateOrderSummary(orderSummary) {
 
-    const totalSummary = new DashboardWidget('total', 'Total', 'bg-info', orderSummary.total);
-    const progressSummary = new DashboardWidget('inprogress', 'In Progress', 'bg-warning', orderSummary.inProgress);
-    const cancelledSummary = new DashboardWidget('cancelled', 'Cancelled', 'bg-danger', orderSummary.cancelled);
-    const completedSummary = new DashboardWidget('completed', 'Completed', 'bg-success', orderSummary.completed);
-    const order = new DashboardWidget('orders');
+    this.totalSummary = new DashboardWidget('total', 'Total', 'bg-info', orderSummary.total);
+    this.progressSummary = new DashboardWidget('inprogress', 'In Progress', 'bg-warning', orderSummary.inProgress);
+    this.cancelledSummary = new DashboardWidget('cancelled', 'Cancelled', 'bg-danger', orderSummary.cancelled);
+    this.completedSummary = new DashboardWidget('completed', 'Completed', 'bg-success', orderSummary.completed);
 
     /** Based on the screen size, switch from standard to one column per row */
-    this.cards = this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet]).pipe(
+    /*this.cards = this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet]).pipe(
 
       map(({ matches }) => {
         if (matches) {
@@ -74,6 +77,6 @@ export class DashboardComponent implements OnInit {
           ];
         }
       })
-    );
+    );*/
   }
 }
