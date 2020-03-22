@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { OrdersComponent } from './orders.component';
-import { StoreEditComponent } from './store-edit/store-edit.component';
+import { OrderEditComponent } from './order-edit/order-edit.component';
 import { StoreListComponent } from './store-search/store-list/store-list.component';
 import { StoreItemComponent } from './store-search/store-list/store-item/store-item.component';
 import { StoreSearchComponent } from './store-search/store-search.component';
@@ -16,11 +16,11 @@ import { OrderItemComponent } from './order-history/order-item/order-item.compon
   declarations: [
     OrdersComponent,
     OrderHistoryComponent,
-    StoreEditComponent,
+    OrderEditComponent,
+    OrderItemComponent,
     StoreListComponent,
     StoreItemComponent,
-    StoreSearchComponent,
-    OrderItemComponent
+    StoreSearchComponent
   ],
   imports: [
     CommonModule,

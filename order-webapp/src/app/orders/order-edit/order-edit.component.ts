@@ -11,13 +11,13 @@ import { AlertService } from 'src/app/shared/services/alert.service';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-store-edit',
-  templateUrl: './store-edit.component.html',
-  styleUrls: ['./store-edit.component.scss']
+  selector: 'app-order-edit',
+  templateUrl: './order-edit.component.html',
+  styleUrls: ['./order-edit.component.scss']
 })
-export class StoreEditComponent implements OnInit {
+export class OrderEditComponent implements OnInit {
 
-  storeId: string;
+  orderId: string;
   editMode = false;
   storeForm: FormGroup;
   states: State[];
@@ -39,10 +39,10 @@ export class StoreEditComponent implements OnInit {
 
     // Check for Edit or New
     this.activatedRoute.params.subscribe((params: Params) => {
-      if (params['storeId'] != null && params['storeId'].length > 0) {
-        this.storeId = params['storeId'];
+      if (params['orderId'] != null && params['orderId'].length > 0) {
+        this.orderId = params['orderId'];
       }
-      this.editMode = params['storeId'] != null;
+      this.editMode = params['orderId'] != null;
       this.initForm();
     });
   }
@@ -51,7 +51,7 @@ export class StoreEditComponent implements OnInit {
 
     // If Edit Mode, then get the details of Store and Patch the Form
     if (this.editMode) {
-      this.orderService.getStore(this.storeId)
+      this.orderService.getStore(this.orderId)
           .subscribe((store: Store) => {
             this.patchStoreForm(store);
           });
@@ -59,7 +59,7 @@ export class StoreEditComponent implements OnInit {
 
     // Initiate the form
     this.storeForm = new FormGroup({
-      'storeId': new FormControl(this.storeId),
+      'storeId': new FormControl(this.orderId),
       'storeType': new FormControl(null, Validators.required),
       'storeRegion': new FormControl(null, Validators.required),
       'storeName': new FormControl(null, Validators.required),
@@ -144,7 +144,7 @@ export class StoreEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.orderService.updateStore(this.storeId, this.storeForm.value)
+      this.orderService.updateStore(this.orderId, this.storeForm.value)
           .subscribe(response => {
             this.alertService.showSuccess('STORE UPDATED SUCCESSFULLY');
             this.onCancel();
@@ -163,7 +163,7 @@ export class StoreEditComponent implements OnInit {
   }
 
   onDelete() {
-    this.orderService.deleteStore(this.storeId)
+    this.orderService.deleteStore(this.orderId)
         .subscribe(response => {
           this.alertService.showSuccess('STORE DELETED SUCCESSFULLY');
           this.onCancel();
