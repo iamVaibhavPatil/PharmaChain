@@ -1,26 +1,10 @@
-<!--<mat-grid-list cols="2" rowHeight="350px">
-  <mat-grid-tile *ngFor="let cardEl of cards | async" [colspan]="cardEl.cols" [rowspan]="cardEl.rows">
-    <div *ngIf="cardEl.name === 'total'">
-      <app-dashboard-widget [card]="cardEl"></app-dashboard-widget>
-    </div>
-    <div *ngIf="cardEl.name === 'orders'">
-      <app-order-history></app-order-history>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list>-->
-
-<div class="row">
-  <div class="col-sm-12 col-md-6 col-lg-6">
-    <mat-grid-list cols="1" rowHeight="535px">
-      <app-dashboard-widget [card]="totalSummary"></app-dashboard-widget>
-      <app-dashboard-widget [card]="progressSummary"></app-dashboard-widget>
-      <app-dashboard-widget [card]="cancelledSummary"></app-dashboard-widget>
-      <app-dashboard-widget [card]="completedSummary"></app-dashboard-widget>
-    </mat-grid-list>
-  </div>
-  <div class="col-sm-12 col-md-6 col-lg-6">
-    <mat-grid-list cols="1" rowHeight="535px">
-      <app-order-history></app-order-history>
-    </mat-grid-list>
-  </div>
-</div>
+<mat-grid-list cols="4" rowHeight="265px">
+    <mat-grid-tile *ngFor="let cardEl of cards | async" [colspan]="cardEl.cols" [rowspan]="cardEl.rows">
+        <div *ngIf="cardEl.name === 'total' || cardEl.name === 'inprogress' || cardEl.name === 'cancelled' || cardEl.name === 'completed'">
+            <app-dashboard-widget [card]="cardEl"></app-dashboard-widget>
+        </div>
+        <div *ngIf="cardEl.name === 'orders'">
+            <app-order-history></app-order-history>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

@@ -10,7 +10,8 @@ export class DashboardWidgetComponent implements OnInit {
 
   @Input() card: DashboardWidget;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
