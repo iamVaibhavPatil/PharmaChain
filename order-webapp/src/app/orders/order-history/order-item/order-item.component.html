@@ -1,20 +1,18 @@
-<a href="#">
-    <mat-card class="phc-card order-card mat-elevation-z3">
+<mat-card class="phc-card order-card mat-elevation-z3" matRipple style="cursor: pointer;" (click)="onEditOrder()">
     <mat-card-content>
-    <div class="row">
-        <div class="col-sm-4">
-            <mat-checkbox>19-MAR-2020</mat-checkbox>
+        <div class="row">
+            <div class="col-sm-4">
+                <mat-checkbox>19-MAR-2020</mat-checkbox>
+            </div>
+            <div class="col-sm-4" [ngClass]="{'d-none': (isHandset | async)}">
+                <span>10</span>
+            </div>
+            <div class="col-sm-3" [ngClass]="{'d-none': (isHandset | async)}">
+                <span>Rs.10000</span>
+            </div>
+            <div class="col-sm-1">
+                <span class="float-right badge primary">In Progress</span>
+            </div>
         </div>
-        <div class="col-sm-4">
-            <span>10</span>
-        </div>
-        <div class="col-sm-3">
-            <span>Rs.10000</span>
-        </div>
-        <div class="col-sm-1">
-            <span class="float-right badge primary">In Progress</span>
-        </div>
-    </div>
     </mat-card-content>
-    </mat-card>
-</a>
+</mat-card>

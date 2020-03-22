@@ -14,10 +14,10 @@
       <div class="col-sm-4">
         Order Date
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4" [ngClass]="{'d-none': (isHandset | async)}">
         <span># of Items</span>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3" [ngClass]="{'d-none': (isHandset | async)}">
         <span>Order Amount</span>
       </div>
       <div class="col-sm-1">

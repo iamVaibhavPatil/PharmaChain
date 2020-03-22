@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-order-history',
@@ -8,7 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class OrderHistoryComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  isHandset: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset])
+    .pipe(
+      map(result => result.matches)
+    );
+
+  constructor(private breakpointObserver: BreakpointObserver,
+              private router: Router) { }
 
   ngOnInit() {
   }
