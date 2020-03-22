@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { OrdersRoutingModule } from './orders-routing.module';
+import { OrderItemComponent } from './order-history/order-item/order-item.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OrdersRoutingModule } from './orders-routing.module';
     StoreEditComponent,
     StoreListComponent,
     StoreItemComponent,
-    StoreSearchComponent
+    StoreSearchComponent,
+    OrderItemComponent
   ],
   imports: [
     CommonModule,
