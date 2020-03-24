@@ -5,7 +5,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 import { OrderService } from '../order.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import * as moment from 'moment';
-import { debounceTime, tap, switchMap, finalize } from 'rxjs/operators';
+import { debounceTime, tap, switchMap, finalize, distinctUntilChanged } from 'rxjs/operators';
 import { Product } from '../product.model';
 import { Order } from '../order.model';
 
@@ -45,6 +45,7 @@ export class OrderEditComponent implements OnInit {
       .valueChanges
       .pipe(
         debounceTime(300),
+        distinctUntilChanged(),
         tap(() => {
           this.filteredProducts = [];
           this.isLoading = true;
@@ -68,7 +69,6 @@ export class OrderEditComponent implements OnInit {
 
   displayFn(product: Product) {
     if (product) {
-      console.log(product);
       return product.productName;
     }
   }
