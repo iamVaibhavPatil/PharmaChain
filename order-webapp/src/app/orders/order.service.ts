@@ -32,7 +32,6 @@ export class OrderService {
   }
 
   public searchProducts(productName: string) {
-    console.log(productName);
     return this.httpClient.get<Product[]>(environment.baseAPIUrl + '/products/search?q=' + productName);
   }
 
