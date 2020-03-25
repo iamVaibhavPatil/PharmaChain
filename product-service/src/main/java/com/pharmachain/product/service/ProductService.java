@@ -1,5 +1,6 @@
 package com.pharmachain.product.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -33,12 +34,16 @@ public class ProductService {
 	}
 	
 	public List<Product> search(String productName) throws ServiceException {
-		List<Product> products = productRepository.findByProductNameContainingIgnoreCase(productName);
-		if(products != null && products.size() > 0) { 
-			return products;
+		if(productName != null && !"".equalsIgnoreCase(productName)) {
+			List<Product> products = productRepository.findByProductNameContainingIgnoreCase(productName);
+			if(products != null && products.size() > 0) { 
+				return products;
+			} else {
+				log.info("Product not found {} -", productName);
+				throw new ServiceException("PS404", "PRODUCT NOT FOUND", HttpStatus.NOT_FOUND);
+			}	
 		} else {
-			log.info("Product not found {} -", productName);
-			throw new ServiceException("PS404", "PRODUCT NOT FOUND", HttpStatus.NOT_FOUND);
+			return new ArrayList<Product>();
 		}
 	}
 	
