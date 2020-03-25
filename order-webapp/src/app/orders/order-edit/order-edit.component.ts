@@ -68,9 +68,7 @@ export class OrderEditComponent implements OnInit {
   }
 
   displayFn(product: Product) {
-    if (product) {
-      return product.productName;
-    }
+    return product && product.productName ? product.productName : '';
   }
 
   initForm() {
