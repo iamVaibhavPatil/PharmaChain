@@ -13,7 +13,7 @@ export class Order {
     constructor() {}
 }
 
-class OrderItem {
+export class OrderItem {
     public productId: string;
     public productName: string;
     public price: number;

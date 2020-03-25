@@ -6,8 +6,9 @@ import { OrderService } from '../order.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Product } from '../product.model';
-import { Order } from '../order.model';
+import { Order, OrderItem } from '../order.model';
 import { Subscription } from 'rxjs';
+import { TokenService } from 'src/app/shared/services/token.service';
 
 @Component({
   selector: 'app-order-edit',
@@ -21,15 +22,17 @@ export class OrderEditComponent implements OnInit, OnDestroy {
   orderForm: FormGroup;
 
   filteredProducts: Product[];
-
   valueChangesSubscription: Subscription;
   productSearchSubscription: Subscription;
+
+  order: Order = new Order();
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private dataService: DataService,
               private orderService: OrderService,
-              private alertService: AlertService) { }
+              private alertService: AlertService,
+              private tokenService: TokenService) { }
 
   ngOnInit() {
 
@@ -42,6 +45,11 @@ export class OrderEditComponent implements OnInit, OnDestroy {
       this.initForm();
     });
 
+    // Create empty order - Initialize
+    this.order.customerId = this.tokenService.getCustomerId();
+    this.order.orderItems = [];
+
+    // Product search listener
     this.valueChangesSubscription = this.orderForm
       .get('productName')
       .valueChanges
@@ -62,7 +70,15 @@ export class OrderEditComponent implements OnInit, OnDestroy {
   }
 
   onProductSelected(product: Product) {
-    console.log(product);
+    if (product && product.productName) {
+      const orderItem: OrderItem = new OrderItem();
+      orderItem.productId = product.productId;
+      orderItem.productName = product.productName;
+      orderItem.price = product.price;
+      orderItem.quantity = 1;
+      orderItem.total = product.price * 1;
+      this.order.orderItems.push(orderItem);
+    }
   }
 
   initForm() {

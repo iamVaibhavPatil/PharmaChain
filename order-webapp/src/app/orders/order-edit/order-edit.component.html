@@ -31,6 +31,14 @@
         </div>
       </div>
 
+      <div class="row" *ngIf="order != null && order.orderItems != null && order.orderItems.length > 0">
+        <div class="col-md-12">
+          <div *ngFor="let orderItemEl of order.orderItems">
+            {{ orderItemEl.productName }}
+          </div>
+        </div>
+      </div>
+
       <div class="col-md-12 mt-3">
         <button mat-stroked-button
           color="primary"
