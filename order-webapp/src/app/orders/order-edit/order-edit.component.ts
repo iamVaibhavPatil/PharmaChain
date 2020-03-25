@@ -1,27 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DataService } from 'src/app/shared/services/data.service';
 import { OrderService } from '../order.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
-import * as moment from 'moment';
-import { debounceTime, tap, switchMap, finalize, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Product } from '../product.model';
 import { Order } from '../order.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-order-edit',
   templateUrl: './order-edit.component.html',
   styleUrls: ['./order-edit.component.scss']
 })
-export class OrderEditComponent implements OnInit {
+export class OrderEditComponent implements OnInit, OnDestroy {
 
   orderId: string;
   editMode = false;
   orderForm: FormGroup;
 
   filteredProducts: Product[];
-  isLoading = false;
+
+  valueChangesSubscription: Subscription;
+  productSearchSubscription: Subscription;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -40,30 +42,20 @@ export class OrderEditComponent implements OnInit {
       this.initForm();
     });
 
-    this.orderForm
+    this.valueChangesSubscription = this.orderForm
       .get('productName')
       .valueChanges
       .pipe(
-        debounceTime(300),
-        distinctUntilChanged(),
-        tap(() => {
-          this.filteredProducts = [];
-          this.isLoading = true;
-        }),
-        switchMap(value => this.orderService.searchProducts(value)
-          .pipe(
-            finalize(() => {
-              this.isLoading = false;
-            }),
-          )
-        )
+        debounceTime(1000),
+        distinctUntilChanged()
       )
-      .subscribe((data: Product[]) => {
-        if (data === undefined) {
-          this.filteredProducts = [];
-        } else {
-          this.filteredProducts = data;
+      .subscribe(data => {
+        if (this.productSearchSubscription) {
+          this.productSearchSubscription.unsubscribe();
         }
+        this.productSearchSubscription = this.orderService.searchProducts(data).subscribe(response => {
+          this.filteredProducts = response;
+        });
       });
   }
 
@@ -131,5 +123,9 @@ export class OrderEditComponent implements OnInit {
 
   onReset() {
     this.orderForm.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.valueChangesSubscription.unsubscribe();
   }
 }

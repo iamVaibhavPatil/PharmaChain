@@ -22,10 +22,10 @@
               autocomplete="off"
               appAutofocus
               appUppercase>
-              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
                 <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
                 <ng-container *ngIf="!isLoading">
-                  <mat-option *ngFor="let product of filteredProducts" [value]="product">
+                  <mat-option *ngFor="let product of filteredProducts" [value]="product.productName">
                     <span><b>{{product.productName}}</b> ({{product.companyName}})</span>
                   </mat-option>
                 </ng-container>
