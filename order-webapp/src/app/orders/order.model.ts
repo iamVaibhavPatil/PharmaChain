@@ -14,6 +14,7 @@ export class Order {
 }
 
 export class OrderItem {
+    public index: number;
     public productId: string;
     public productName: string;
     public price: number;

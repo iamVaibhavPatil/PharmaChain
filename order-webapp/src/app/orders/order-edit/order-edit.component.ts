@@ -72,6 +72,7 @@ export class OrderEditComponent implements OnInit, OnDestroy {
   onProductSelected(product: Product) {
     if (product && product.productName) {
       const orderItem: OrderItem = new OrderItem();
+      orderItem.index = this.order.orderItems.length + 1;
       orderItem.productId = product.productId;
       orderItem.productName = product.productName;
       orderItem.price = product.price;
