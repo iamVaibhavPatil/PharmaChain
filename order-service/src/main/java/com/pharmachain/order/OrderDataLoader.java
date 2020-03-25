@@ -43,7 +43,7 @@ public class OrderDataLoader implements ApplicationListener<ContextRefreshedEven
 		// Order1 Item - 1
 		OrderItem order1Item1 = new OrderItem();
 		order1Item1.setProductId("5172bc5a-f807-4ceb-9bf3-4d82ec77b623");
-		order1Item1.setProductName("Codistar Cough Syrup");
+		order1Item1.setProductName("CODISTAR COUGH SYRUP");
 		order1Item1.setPrice(7800);
 		order1Item1.setQuantity(2);
 		order1Item1.setTotal(15600);
@@ -51,7 +51,7 @@ public class OrderDataLoader implements ApplicationListener<ContextRefreshedEven
 		// Order1 Item - 2
 		OrderItem order1Item2 = new OrderItem();
 		order1Item2.setProductId("14bb8752-1aa6-40a7-87d9-c9e17fcd0367");
-		order1Item2.setProductName("Saridon");
+		order1Item2.setProductName("SARIDON");
 		order1Item2.setPrice(1000);
 		order1Item2.setQuantity(5);
 		order1Item2.setTotal(5000);
@@ -82,7 +82,7 @@ public class OrderDataLoader implements ApplicationListener<ContextRefreshedEven
 		// Order2 Item - 1
 		OrderItem order2Item1 = new OrderItem();
 		order2Item1.setProductId("28f7a710-20ed-4f89-854d-0c465591822a");
-		order2Item1.setProductName("Motrin");
+		order2Item1.setProductName("MOTRIN");
 		order2Item1.setPrice(25000);
 		order2Item1.setQuantity(2);
 		order2Item1.setTotal(50000);
@@ -90,7 +90,7 @@ public class OrderDataLoader implements ApplicationListener<ContextRefreshedEven
 		// Order2 Item - 2
 		OrderItem order2Item2 = new OrderItem();
 		order2Item2.setProductId("3324ee7d-048d-43b0-a9db-8be7363f9156");
-		order2Item2.setProductName("Aciloc");
+		order2Item2.setProductName("ACILOC");
 		order2Item2.setPrice(1200);
 		order2Item2.setQuantity(5);
 		order2Item2.setTotal(6000);
@@ -121,7 +121,7 @@ public class OrderDataLoader implements ApplicationListener<ContextRefreshedEven
 		// Order3 Item - 1
 		OrderItem order3Item1 = new OrderItem();
 		order3Item1.setProductId("83319773-8482-4750-b678-95bb7e97e423");
-		order3Item1.setProductName("Betnesol");
+		order3Item1.setProductName("BETNESOL");
 		order3Item1.setPrice(2500);
 		order3Item1.setQuantity(2);
 		order3Item1.setTotal(5000);
@@ -129,7 +129,7 @@ public class OrderDataLoader implements ApplicationListener<ContextRefreshedEven
 		// Order3 Item - 2
 		OrderItem order3Item2 = new OrderItem();
 		order3Item2.setProductId("5172bc5a-f807-4ceb-9bf3-4d82ec77b623");
-		order3Item2.setProductName("Codistar Cough Syrup");
+		order3Item2.setProductName("CODISTAR COUGH SYRUP");
 		order3Item2.setPrice(7800);
 		order3Item2.setQuantity(2);
 		order3Item2.setTotal(15600);
