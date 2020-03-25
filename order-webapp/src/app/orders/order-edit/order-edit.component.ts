@@ -50,20 +50,19 @@ export class OrderEditComponent implements OnInit, OnDestroy {
         distinctUntilChanged()
       )
       .subscribe(data => {
-        if (this.productSearchSubscription) {
-          this.productSearchSubscription.unsubscribe();
+        if (data) {
+          if (this.productSearchSubscription) {
+            this.productSearchSubscription.unsubscribe();
+          }
+          this.productSearchSubscription = this.orderService.searchProducts(data).subscribe(response => {
+            this.filteredProducts = response;
+          });
         }
-        this.productSearchSubscription = this.orderService.searchProducts(data).subscribe(response => {
-          this.filteredProducts = response;
-        });
       });
   }
 
-  displayFn(product: Product) {
-    if (product && product.productName) {
-      console.log('displayFn' + product.productName);
-    }
-    return product && product.productName ? product.productName : '';
+  onProductSelected(product: Product) {
+    console.log(product);
   }
 
   initForm() {
