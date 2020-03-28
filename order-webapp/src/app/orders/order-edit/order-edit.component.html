@@ -34,12 +34,12 @@
       <div class="row" *ngIf="order != null && order.orderItems != null && order.orderItems.length > 0">
         <div class="col-md-8">
           <div class="row">
-            <div class="col-sm-1"><span class="ml-3 font-weight-bold">#</span></div>
-            <div class="col-sm-4"><span class="ml-3 font-weight-bold">Product Name</span></div>
-            <div class="col-sm-2"><span class="font-weight-bold">Quantity</span></div>
-            <div class="col-sm-2"><span class="font-weight-bold">Unit Price</span></div>
-            <div class="col-sm-2"><span class="font-weight-bold">Total</span></div>
-            <div class="col-sm-1"><span class="font-weight-bold">Action</span></div>
+            <div class="col-sm-1"><span class="ml-3 font-italic">#</span></div>
+            <div class="col-sm-4"><span class="ml-3 font-italic">Product Name</span></div>
+            <div class="col-sm-2"><span class="font-italic">Quantity</span></div>
+            <div class="col-sm-2"><span class="font-italic">Unit Price</span></div>
+            <div class="col-sm-2"><span class="font-italic">Total</span></div>
+            <div class="col-sm-1"><span class="font-italic">Action</span></div>
           </div>
           <div *ngFor="let orderItemEl of order.orderItems">
             <mat-card class="phc-card order-card mat-elevation-z3">
@@ -75,8 +75,8 @@
           </div>
         </div>
         <div class="col-md-4">
-          <span class="font-weight-bold">Order Summary</span>
-          <mat-card class="phc-card order-card mat-elevation-z3">
+          <mat-card class="phc-card order-card mat-elevation-z4 no-radius">
+            <mat-card-title class="mat-card-title-custom">Order Summary</mat-card-title>
             <mat-card-content>
               <div class="row py-2 border-bottom"><div class="col-sm-8">Products</div><div class="col-sm-4">200.00</div></div>
               <div class="row py-2 border-bottom"><div class="col-sm-8">Discount</div><div class="col-sm-4">0.00</div></div>
