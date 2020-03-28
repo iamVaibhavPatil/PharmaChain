@@ -34,12 +34,12 @@
       <div class="row" *ngIf="order != null && order.orderItems != null && order.orderItems.length > 0">
         <div class="col-md-8">
           <div class="row">
-            <div class="col-sm-1"><span class="ml-3">#</span></div>
-            <div class="col-sm-4"><span class="ml-3">Product Name</span></div>
-            <div class="col-sm-2">Quantity</div>
-            <div class="col-sm-2">Unit Price</div>
-            <div class="col-sm-2">Total</div>
-            <div class="col-sm-1">Action</div>
+            <div class="col-sm-1"><span class="ml-3 font-weight-bold">#</span></div>
+            <div class="col-sm-4"><span class="ml-3 font-weight-bold">Product Name</span></div>
+            <div class="col-sm-2"><span class="font-weight-bold">Quantity</span></div>
+            <div class="col-sm-2"><span class="font-weight-bold">Unit Price</span></div>
+            <div class="col-sm-2"><span class="font-weight-bold">Total</span></div>
+            <div class="col-sm-1"><span class="font-weight-bold">Action</span></div>
           </div>
           <div *ngFor="let orderItemEl of order.orderItems">
             <mat-card class="phc-card order-card mat-elevation-z3">
@@ -75,7 +75,16 @@
           </div>
         </div>
         <div class="col-md-4">
-            Cart Payment Details
+          <span class="font-weight-bold">Order Summary</span>
+          <mat-card class="phc-card order-card mat-elevation-z3">
+            <mat-card-content>
+              <div class="row py-2 border-bottom"><div class="col-sm-8">Products</div><div class="col-sm-4">200.00</div></div>
+              <div class="row py-2 border-bottom"><div class="col-sm-8">Discount</div><div class="col-sm-4">0.00</div></div>
+              <div class="row py-2 border-bottom"><div class="col-sm-8">Shipping charges</div><div class="col-sm-4">10.00</div></div>
+              <div class="row py-2 border-bottom"><div class="col-sm-8">Taxes</div><div class="col-sm-4">15.00</div></div>
+              <div class="row py-2"><div class="col-sm-8">Total amount</div><div class="col-sm-4">225.00</div></div>
+            </mat-card-content>
+          </mat-card>
         </div>
       </div>
 
