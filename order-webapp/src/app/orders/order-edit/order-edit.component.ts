@@ -79,6 +79,12 @@ export class OrderEditComponent implements OnInit, OnDestroy {
       orderItem.quantity = 1;
       orderItem.total = product.price * 1;
       this.order.orderItems.push(orderItem);
+
+      this.order.orderAmount = this.order.orderAmount ? this.order.orderAmount + orderItem.total : orderItem.total;
+      this.order.discount = 0;
+      this.order.totalTax = 0;
+      this.order.shippingCharge = 0;
+      this.order.netPayoutAmount = this.order.orderAmount + this.order.discount + this.order.totalTax + this.order.shippingCharge;
     }
   }
 
