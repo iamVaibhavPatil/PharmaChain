@@ -7,11 +7,14 @@ There are 2 goals of this project -
 
 I will be using Java/Spring/Netflix OSS to built a microservices backend. Angular to built a component based front end.
 
-Currently working on order management application.
-
 ### Technical Architecture
 
 ### Application startup process
+1. Install Java, Maven, MongoDB  
+2. Create a 'pharmachain' database in MongoDB  
+3. Clone this repository  
+4. Run startup.bat  
+5. Open - localhost:4200
 
 ### Eureka Server
 ![Eureka Server](ZShots/EurekaServer.PNG)
