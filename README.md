@@ -9,5 +9,18 @@ I will be using Java/Spring/Netflix OSS to built a microservices backend. Angula
 
 Currently working on order management application.
 
+### Technical Architecture
+
+### Application startup process
+
 ### Eureka Server
-![Recursion](ZShots/EurekaServer.PNG)
+![Eureka Server](ZShots/EurekaServer.PNG)
+
+### Login
+![Login](ZShots/Login.PNG)
+
+### Dashboard
+![Dashboard](ZShots/Dashboard.PNG)
+
+### Create New Order
+![Create New Order](ZShots/CreateNewOrder.PNG)
