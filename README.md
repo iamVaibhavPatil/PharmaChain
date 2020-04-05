@@ -7,7 +7,7 @@ There are 2 goals of this project -
 
 I will be using Java/Spring/Netflix OSS to built a microservices backend. Angular to built a component based front end.
 
-**I am currently working on this project in my freetime.**
+**I am currently working on this project in my freetime. Some of feature data is mocked**
 
 ### Technical Architecture
 
